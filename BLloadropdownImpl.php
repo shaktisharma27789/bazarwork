@@ -5,7 +5,7 @@ include 'DB.php';
 class BLloadropdownImpl {
 	
 	function loadState()
-   {
+   { 
       $db = new DB(); 
 	  
 	  /* $condition = array('where' => array('email' => $email,
@@ -19,6 +19,7 @@ class BLloadropdownImpl {
 	}   
 	
 	function loadCity($state){
+		/*testing*/
 		$db = new DB();
 		$condition = array('where' => array('city_state' => $state),'select' => 'city_name');
 	  $records = $db->getRows('t_cities',$condition);

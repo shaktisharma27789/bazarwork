@@ -8,9 +8,7 @@ $bl = new BLloadropdownImpl();
 if(isset($_REQUEST['type']) && !empty($_REQUEST['type'])){
     $type = $_REQUEST['type'];
     switch($type){
-		
-		
-        case "loadState":
+		case "loadState":
 		$data_jason['State']=$bl->loadState();
 		echo json_encode($data_jason);
 		 break;

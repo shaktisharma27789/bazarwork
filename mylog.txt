@@ -1,0 +1,2 @@
+[03/Mar/2017:21:02:54] (BLloadropdownAction) SQLSTATE[42S22]: Column not found: 1054 Unknown column 'city_lstate' in 'field list'
+[03/Mar/2017:21:27:28] (BLloadropdownAction) SQLSTATE[42S22]: Column not found: 1054 Unknown column 'city_lstate' in 'field list'

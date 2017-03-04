@@ -1,25 +1,43 @@
 <?php
 include 'DB.php';
+include('mylib.php');
 
 
-class BLloadropdownImpl {
+class BLloadropdownImpl extends Exception {
 	
+	 public function errorMessage() {
+    //error message
+    $errorMsg = 'Error on line '.$this->getLine().' in '.$this->getFile()
+    .': <b>'.$this->getMessage().'</b> is not a valid E-Mail address';
+    return $errorMsg;
+  }
+
+
 	function loadState()
-   { 
+   {    $log = new Logging();   
+        $log->lfile('mylog.txt');
+   
       $db = new DB(); 
 	  
 	  /* $condition = array('where' => array('email' => $email,
                 'password' => $password, 'active' => 1), 'select' => 'wid,name');*/
-			$condition = array('select' => 'city_state' ,'group by'=>'city_state');
+		try{		
+	
+	  $condition = array('select' => 'city_state' ,'group by'=>'city_state');
 	  $records = $db->getRows('t_cities',$condition);
 	  $empRec=(array_values($records));
 	  if($records){
-		   return $empRec;
+		  return $empRec;
 	  }
+	}catch(Exception $e){
+		//echo ;
+		$log->lwrite($e->getMessage());
+            }
+			$log->lclose();
 	}   
 	
 	function loadCity($state){
-		/*testing*/
+		
 		$db = new DB();
 		$condition = array('where' => array('city_state' => $state),'select' => 'city_name');
 	  $records = $db->getRows('t_cities',$condition);
